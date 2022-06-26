@@ -1,29 +1,12 @@
-const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb://localhost:27017/shop";
 var express = require('express');
 var app = express();
-
-const bodyParser = require('body-parser');
 
 
 app.use(express.static('public'));
 
-app.use(bodyParser.urlencoded({
-    extended: true
-  }));
-
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-var db;
-
-//Sets up the Mongodb database//
-MongoClient.connect(url, function (err, database) {
-    if (err) throw err;
-    db = database;
-    app.listen(8080);
-    console.log('listening on 8080');
-  });
 
 //home page
 app.get('/', function (req, res) {
