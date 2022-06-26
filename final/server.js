@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 //home page
 //Default goes to Home//
 app.get('/', function (req, res) {
-    res.render('/home');
+    res.render('pages/home');
   });
 
 //login page
