@@ -5,7 +5,7 @@ var app = express();
 var db;
 
 app.use(express.static('public'))
-app.use(express.urlencoded({extended:true}))
+
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
