@@ -17,7 +17,6 @@ MongoClient.connect(url, function (err, database) {
     if (err) throw err;
     db = database;
     app.listen(8080);
-    console.log('listening on 8080');
 });
 
 // set the view engine to ejs
