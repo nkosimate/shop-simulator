@@ -16,12 +16,12 @@ app.get('/', function (req, res) {
 
 //login page
 app.get('/login',function(req,res){
-    res.render('/login')
+    res.render('pages/login')
 });
 
 //create account page
 app.get('createAccount',function(req,res){
-    res.render('/createAcc')
+    res.render('pages/createAcc')
 });
 
 app.listen(8080);
