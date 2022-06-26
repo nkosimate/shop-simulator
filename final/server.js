@@ -11,17 +11,17 @@ app.set('view engine', 'ejs');
 //home page
 //Default goes to Home//
 app.get('/', function (req, res) {
-    res.render('/home.ejs');
+    res.render('/home');
   });
 
 //login page
 app.get('/login',function(req,res){
-    res.render('login')
+    res.render('/login')
 });
 
 //create account page
 app.get('createAccount',function(req,res){
-    res.render('createAcc')
+    res.render('/createAcc')
 });
 
 app.listen(8080);
