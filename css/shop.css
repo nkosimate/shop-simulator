@@ -1,0 +1,158 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+    background-color: purple;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#hi {
+    background-color: white;
+    padding: 2px;
+    margin-right: 5px;
+    border: 2px solid;
+    width: 10em;
+    text-align: center;
+}
+
+#money {
+    background-color: white;
+    padding: 2px;
+    margin-right: 5px;
+    border: 2px solid;
+    width: 10em;
+    text-align: center;
+}
+
+#team {
+    background-color: white;
+    padding: 2px;
+    margin-right: 5px;
+    border: 2px solid;
+    width: 10em;
+    text-align: center;
+}
+
+
+.product {
+    display: inline-block;
+    padding: 10px;
+}
+
+
+
+#p1 {
+    background-image: url(../img/ayeezy.jpg);
+    background-size: contain;
+    height: 250px;
+    width: 250px;
+    border: 2px solid;
+}
+
+#p2 {
+    background-image: url(../img/bale.jpg);
+    background-size: contain;
+    height: 250px;
+    width: 250px;
+    border: 2px solid;
+}
+
+#p3 {
+    background-image: url(../img/crocs.webp);
+    background-size: contain;
+    height: 250px;
+    width: 250px;
+    border: 2px solid;
+}
+
+#p4 {
+    background-image: url(../img/dunkBlack.jpg);
+    background-size: contain;
+    height: 250px;
+    width: 250px;
+    border: 2px solid;
+}
+
+#p5 {
+    background-image: url(../img/dunkBlue.webp);
+    background-size: contain;
+    height: 250px;
+    width: 250px;
+    border: 2px solid;
+    background-repeat: no-repeat;
+}
+
+#p6 {
+    background-image: url(../img/heels.webp);
+    background-size: contain;
+    height: 250px;
+    width: 250px;
+    border: 2px solid;
+    background-repeat: no-repeat;
+}
+
+#p7 {
+    background-image: url(../img/j1Blue.jpg.webp);
+    background-size: contain;
+    height: 250px;
+    width: 250px;
+    border: 2px solid;
+}
+
+#p8 {
+    background-image: url(../img/j1Grey.webp);
+    background-size: contain;
+    height: 250px;
+    width: 250px;
+    border: 2px solid;
+    background-repeat: no-repeat;
+}
+
+#p9 {
+    background-image: url(../img/yeezyRunner.png.webp);
+    background-size: contain;
+    height: 250px;
+    width: 250px;
+    border: 2px solid;
+}
+
+#p10 {
+    background-image: url(../img/yeezySlide.jpg.webp);
+    background-size: contain;
+    height: 250px;
+    width: 250px;
+    border: 2px solid;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btn {
+    background-color: purple;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-right: 35px;
+}
+
+.btn:hover {
+    background-color: darkmagenta;
+
+}

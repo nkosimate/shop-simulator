@@ -1,0 +1,55 @@
+body {
+    height: 745px;
+}
+
+
+.welcome {
+    width: 45%;
+    border-radius: 25px;
+    padding-top: 20em;
+    float: left;
+    padding: 2%;
+    border-style: solid;
+    border-color: purple;
+    height: 100%;
+    text-align: center;
+    line-height: 700px;
+}
+
+.rightSide {
+    width: 45%;
+    float: right;
+    font-size: 30px;
+    height: 100%;
+    padding: 2%;
+}
+
+#loginBtn {
+    width: 100%;
+    font-size: 35px;
+    border: none;
+    background-color: purple;
+    color: white;
+    margin-top: 25%;
+    cursor: pointer;
+}
+
+#loginBtn:hover{
+    background-color: grey;
+
+}
+
+#createBtn {
+    width: 100%;
+    font-size: 35px;
+    border: none;
+    background-color: purple;
+    color: white;
+    margin-top: 10%;
+    cursor: pointer;
+}
+
+#createBtn:hover{
+    background-color: grey;
+
+}
