@@ -101,6 +101,13 @@ app.get('/admin', function (req, res) {
     });
 });
 
+//logs user out then redirects to home page
+app.get('/logout', function(req, res) {
+    req.session.loggedin = false;
+    req.session.destroy();
+    res.redirect('/login');
+  });
+
 //********** POST ROUTES - Deal with processing data from forms ***************************
 
 

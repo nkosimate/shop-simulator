@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,18 @@
     <title>Admin</title>
     <link rel="stylesheet" href="css/admin.css">
 </head>
+
 <body>
     <header>
         <nav>
             <ul>
                 <li id="hi"> Hi Admin</li>
                 <li><button class="btn" id="startBtn">Start</button></li>
-                <li><button class="btn"id="stopBtn">Stop</button></li>
-                <li><button class="btn"id="resetBtn">Reset</button></li>
-                <li style="float:right"><button class="btn" id="logoutBtn">Logout</button></li>
+                <li><button class="btn" id="stopBtn">Stop</button></li>
+                <li><button class="btn" id="resetBtn">Reset</button></li>
+                <a href="/logout">
+                    <li style="float:right"><button class="btn" id="logoutBtn">Logout</button></li>
+                </a>
             </ul>
         </nav>
     </header>
@@ -23,7 +27,7 @@
         <h1> Team 1</h1>
         <h3>Transactions</h3>
         <h2>Net spend</h2>
-    </div>    
+    </div>
     <div id="team2">
         <h1> Team 2</h1>
         <h3>Transactions</h3>
@@ -34,4 +38,5 @@
         <h1>Team ....</h1>
     </div>
 </body>
+
 </html>
