@@ -34,7 +34,7 @@
             <script>
                 function clicked(){
                 var price = "<%= productarray[0].price %>";
-                var intprice = parseInt(price);
+                var intprice = (parseInt(price));
                 var newprice = price + 5;
                 document.getElementById('price').innerHTML = newprice;
                 }
