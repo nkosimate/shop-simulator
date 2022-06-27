@@ -69,7 +69,7 @@ app.get('/shop', function (req, res) {
     db.collection('users').findOne({ "login.username": currentuser }, function (err, result) {
         if (err) throw err;
 
-        db.collection('products').find().toArray(function (err, presult) {
+        db.collection('product').find().toArray(function (err, presult) {
             res.render('pages/shop', {
                 user: result,
                 productsarray: presult
