@@ -60,28 +60,25 @@ app.get('/logout', function (req, res) {
 
 //this is our shop route, it takes in a username and uses that to search the database for a specific user
 app.get('/shop', function (req, res) {
-    if (!req.session.loggedin) {
-        res.redirect('pages/login');
-        return;
+    if (!req.session.loggedin) { 
+      res.redirect('/login'); 
+      return; 
     }
-    //get the requested user based on their username, 
+    //get the requested user based on their username, eg /profile?username=dioreticllama
+    //console.log(uname+ ":" + result);
     var currentuser = req.session.currentuser;
-    db.collection('users').findOne({ "login.username": currentuser }, function (err, userresult) {
-        if (err) throw err;
-
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                user: userresult,
-                productsarray: presult
-            })
-            console.log(userresult);
-            console.log(presult);
-
+    db.collection('users').findOne({ "login.username": currentuser },function (err, result) {
+      if (err) throw err;
+      
+      db.collection('product').find().toArray(function (err, presult) {
+        res.render('pages/profile', {
+          user: result,
+          productarray: presult
         })
+      })
     });
-
-
-});
+  });
+  
 
 //this is the admin route. should only be accessed by admin
 app.get('/admin', function (req, res) {
