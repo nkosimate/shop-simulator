@@ -13,7 +13,7 @@
     <header>
         <nav>
             <ul>
-                <li id="hi">Hi <%= user.name %></li>
+                <li id="hi">Hi user</li>
                 <li id="money">£100000</li>
                 <li id="team">Team 1</li>
                 <a href="/logout">
@@ -22,10 +22,9 @@
             </ul>
         </nav>
     </header>
-
     <div class="product">
         <div id="p1">
-            <h1>£150</h1>
+            <h1><%= productarray.price[0] %></h1>
         </div>
         <button class="btn">Buy</button>
         <button class="btn">Sell</button>
