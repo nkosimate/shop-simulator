@@ -1,4 +1,4 @@
-function priceup(price){
-    price += 5;
-    document.getElementById("pricep1").innerHTML=price;
+function priceup(x){
+    var newbalance = x+5;
+    document.getElementById('price').innerHTML= newbalance;
 }
