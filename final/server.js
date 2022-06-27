@@ -74,6 +74,9 @@ app.get('/shop', function (req, res) {
                 user: result,
                 productsarray: presult
             })
+            console.log(result);
+            console.log(presult);
+
         })
     });
 
