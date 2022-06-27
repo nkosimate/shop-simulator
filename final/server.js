@@ -66,23 +66,17 @@ app.get('/shop', function (req, res) {
     }
     //get the requested user based on their username, 
     var currentuser = req.session.currentuser;
-    //this query finds the first document in the array with that username.
-    //Because the username value sits in the login section of the user data we use login.username
-    db.collection('users').findOne({
-        "login.username": currentuser
-    }, function (err, result) {
+    db.collection('users').findOne({ "login.username": currentuser }, function (err, result) {
         if (err) throw err;
-        //get the product collection
-        db.collection('product').find().toArray(function (err, presult) {
-            //finally we just send the result to the user page as "user"
+
+        db.collection('products').find().toArray(function (err, presult) {
             res.render('pages/shop', {
                 user: result,
-                product: presult
+                productsarray: presult
             })
-            console.log(user);
-            console.log(product);
         })
     });
+
 
 });
 
