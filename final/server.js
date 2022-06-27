@@ -89,23 +89,16 @@ app.get('/admin', function (req, res) {
     }
     //get the requested user based on their username, eg /profile?username=dioreticllama
     var uname = req.query.username;
-    if (uname == "admin") {
-        db.collection('users').findOne({
-            "login.username": uname
-        }, function (err, result) {
-            if (err) throw err;
-            console.log(uname + ":" + result);
-            //finally we just send the result to the user page as "user"
-            res.render('pages/admin', {
-                //user: result
-            })
-        });
-    } else {
-        //send them to the shop as they are not an admin
-        res.render('pages/shop')
-    }
-
-
+    db.collection('users').findOne({
+        "login.username": uname
+    }, function (err, result) {
+        if (err) throw err;
+        console.log(uname + ":" + result);
+        //finally we just send the result to the user page as "user"
+        res.render('pages/admin', {
+            //user: result
+        })
+    });
 });
 
 //********** POST ROUTES - Deal with processing data from forms ***************************
