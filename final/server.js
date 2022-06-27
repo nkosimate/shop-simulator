@@ -66,15 +66,15 @@ app.get('/shop', function (req, res) {
     }
     //get the requested user based on their username, 
     var currentuser = req.session.currentuser;
-    db.collection('users').findOne({ "login.username": currentuser }, function (err, result) {
+    db.collection('users').findOne({ "login.username": currentuser }, function (err, userresult) {
         if (err) throw err;
 
         db.collection('product').find().toArray(function (err, presult) {
             res.render('pages/shop', {
-                user: result,
+                user: userresult,
                 productsarray: presult
             })
-            console.log(result);
+            console.log(userresult);
             console.log(presult);
 
         })
