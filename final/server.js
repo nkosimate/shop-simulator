@@ -65,11 +65,11 @@ app.get('/shop', function (req, res) {
         return;
     }
     //get the requested user based on their username, 
-    var uname = req.query.username;
+    var currentuser = req.session.currentuser;
     //this query finds the first document in the array with that username.
     //Because the username value sits in the login section of the user data we use login.username
     db.collection('users').findOne({
-        "login.username": uname
+        "login.username": currentuser
     }, function (err, result) {
         if (err) throw err;
         //get the product collection
