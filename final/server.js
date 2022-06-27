@@ -77,3 +77,28 @@ app.get('/shop', function (req, res) {
     });
 
 });
+
+//********** POST ROUTES - Deal with processing data from forms ***************************
+ 
+ 
+ //the dologin route detasl with the data from the login screen.
+ //the post variables, username and password ceom from the form on the login page.
+ app.post('/dologin', function(req, res) {
+    console.log(JSON.stringify(req.body))
+    var uname = req.body.username;
+    var pword = req.body.password;
+  
+  
+  
+    db.collection('users').findOne({"login.username":uname}, function(err, result) {
+      if (err) throw err;//if there is an error, throw the error
+      //if there is no result, redirect the user back to the login system as that username must not exist
+      if(!result){res.redirect('/login');return}
+      //if there is a result then check the password, if the password is correct set session loggedin to true and send the user to the index
+      if(result.login.password == pword){ req.session.loggedin = true; res.redirect('/shop') }
+      //otherwise send them back to login
+      else{res.redirect('/login')}
+    });
+  });
+  
+ 
