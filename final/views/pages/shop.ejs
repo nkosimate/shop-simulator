@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <link rel="stylesheet" href="css/shop.css">
+    <script src="script/shop.js"></script>
 </head>
 
 <body>
@@ -24,9 +25,16 @@
     </header>
     <div class="product">
         <div id="p1">
-            <h1>£<%= productarray[0].price %></h1>
+            <h1 id="pricep1">£<%= productarray[0].price %></h1>
         </div>
-        <button class="btn">Buy</button>
+        <button class="btn" id="buy0" type="submit">
+            Buy
+            <script>
+                var newprice = productarray[0].price +5;
+                var buybtn = document.getElementById("buy0")
+                buybtn.onclick =  document.getElementById("pricep1") = newprice;
+            </script>
+        </button>
         <button class="btn">Sell</button>
     </div>
 
@@ -34,7 +42,7 @@
         <div id="p2">
             <h1>£<%= productarray[1].price %></h1>
         </div>
-        <button class="btn">Buy</button>
+        <button class="btn"id="buy1">Buy</button>
         <button class="btn">Sell</button>
     </div>
 
@@ -42,57 +50,57 @@
         <div id="p3">
             <h1>£<%= productarray[2].price %></h1>
         </div>
-        <button class="btn">Buy</button>
+        <button class="btn"id="buy2">Buy</button>
         <button class="btn">Sell</button>
     </div>
     <div class="product">
         <div id="p4">
             <h1>£<%= productarray[3].price %></h1>
         </div>
-        <button class="btn">Buy</button>
+        <button class="btn"id="buy3">Buy</button>
         <button class="btn">Sell</button>
     </div>
     <div class="product">
         <div id="p5">
             <h1>£<%= productarray[4].price %></h1>
         </div>
-        <button class="btn">Buy</button>
+        <button class="btn"id="buy4">Buy</button>
         <button class="btn">Sell</button>
     </div>
     <div class="product">
         <div id="p6">
             <h1>£<%= productarray[5].price %></h1>
         </div>
-        <button class="btn">Buy</button>
+        <button class="btn"id="buy5">Buy</button>
         <button class="btn">Sell</button>
     </div>
     <div class="product">
         <div id="p7">
             <h1>£<%= productarray[6].price %></h1>
         </div>
-        <button class="btn">Buy</button>
+        <button class="btn"id="buy6">Buy</button>
         <button class="btn">Sell</button>
     </div>
     <div class="product">
         <div id="p8">
             <h1>£<%= productarray[7].price %></h1>
         </div>
-        <button class="btn">Buy</button>
+        <button class="btn"id="buy7">Buy</button>
         <button class="btn">Sell</button>
     </div>
     <div class="product">
         <div id="p9">
             <h1>£<%= productarray[8].price %></h1>
         </div>
-        <button class="btn">Buy</button>
+        <button class="btn"id="buy8">Buy</button>
         <button class="btn">Sell</button>
     </div>
     <div class="product">
         <div id="p10">
             <h1>£<%= productarray[9].price %></h1>
         </div>
-        <button class="btn">Buy</button>
-        <button class="btn">Sell</button>
+        <button class="btn"id="buy9">Buy</button>
+        <button class="btn"id="sell9">Sell</button>
     </div>
 
 </body>
