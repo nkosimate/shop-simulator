@@ -6,17 +6,20 @@ const app = express();
 
 app.use(express.static('public'));
 
+//code to tell express we want to read POSTED forms
 app.use(bodyParser.urlencoded({
     extended: true
 }))
 
+//variable to hold our Database
 var db;
 
-//Sets up the Mongodb database//
+//this is our connection to the mongo db, ts sets the variable db as our database
 MongoClient.connect(url, function (err, database) {
     if (err) throw err;
     db = database;
     app.listen(8080);
+    console.log('listening on 8080');
 });
 
 // set the view engine to ejs
@@ -42,5 +45,3 @@ app.get('/login', function (req, res) {
 app.get('createAccount', function (req, res) {
     res.render('pages/createAcc')
 });
-
-app.listen(8080);
