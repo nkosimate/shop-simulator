@@ -46,7 +46,7 @@ app.get('/login', function (req, res) {
 });
 
 //create account page
-app.get('register', function (req, res) {
+app.get('/register', function (req, res) {
     res.render('pages/register')
 });
 
@@ -60,7 +60,10 @@ app.get('/logout', function (req, res) {
 
 //this is our shop route, it takes in a username and uses that to search the database for a specific user
 app.get('/shop', function (req, res) {
-    if (!req.session.loggedin) { res.redirect('pages/login'); return; }
+    if (!req.session.loggedin) {
+        res.redirect('pages/login');
+        return;
+    }
     //get the requested user based on their username, eg /profile?username=dioreticllama
     var uname = req.query.username;
     //this query finds the first document in the array with that username.
@@ -69,7 +72,7 @@ app.get('/shop', function (req, res) {
         "login.username": uname
     }, function (err, result) {
         if (err) throw err;
-        console.log(uname+ ":" + result);
+        console.log(uname + ":" + result);
         //finally we just send the result to the user page as "user"
         res.render('pages/shop', {
             user: result
@@ -78,27 +81,61 @@ app.get('/shop', function (req, res) {
 
 });
 
+//this is the admin route. should only be accessed by admin
+app.get('/admin', function (req, res) {
+    if (!req.session.loggedin) {
+        res.redirect('pages/login');
+        return;
+    }
+    //get the requested user based on their username, eg /profile?username=dioreticllama
+    var uname = req.query.username;
+    db.collection('users').findOne({
+        "login.username": uname
+    }, function (err, result) {
+        if (err) throw err;
+        console.log(uname + ":" + result);
+        //finally we just send the result to the user page as "user"
+        if (uname == "admin") {
+            res.render('pages/admin', {
+                user: result
+            })
+        }
+        else {
+            //send them to the shop as they are not an admin
+            res.render('pages/shop')
+        }
+    });
+
+
+});
+
 //********** POST ROUTES - Deal with processing data from forms ***************************
- 
- 
- //the dologin route detasl with the data from the login screen.
- //the post variables, username and password ceom from the form on the login page.
- app.post('/dologin', function(req, res) {
+
+
+//the dologin route detasl with the data from the login screen.
+//the post variables, username and password ceom from the form on the login page.
+app.post('/dologin', function (req, res) {
     console.log(JSON.stringify(req.body))
     var uname = req.body.username;
     var pword = req.body.password;
-  
-  
-  
-    db.collection('users').findOne({"login.username":uname}, function(err, result) {
-      if (err) throw err;//if there is an error, throw the error
-      //if there is no result, redirect the user back to the login system as that username must not exist
-      if(!result){res.redirect('/login');return}
-      //if there is a result then check the password, if the password is correct set session loggedin to true and send the user to the index
-      if(result.login.password == pword){ req.session.loggedin = true; res.redirect('/shop') }
-      //otherwise send them back to login
-      else{res.redirect('/login')}
+
+
+
+    db.collection('users').findOne({ "login.username": uname }, function (err, result) {
+        if (err) throw err;//if there is an error, throw the error
+        //if there is no result, redirect the user back to the login system as that username must not exist
+        if (!result) { res.redirect('/login'); return }
+        //if there is a result then check the password, if the password is correct set session loggedin to true and send the user to the index
+        if (result.login.password == pword) {
+            req.session.loggedin = true;
+            if (uname == "admin") {
+                res.redirect('/admin')
+            } else {
+                res.redirect('/shop')
+            }
+        }
+        //otherwise send them back to login
+        else { res.redirect('/login') }
     });
-  });
-  
- 
+});
+
