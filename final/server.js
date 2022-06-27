@@ -64,7 +64,7 @@ app.get('/shop', function (req, res) {
         res.redirect('pages/login');
         return;
     }
-    //get the requested user based on their username, eg /profile?username=dioreticllama
+    //get the requested user based on their username, 
     var uname = req.query.username;
     //this query finds the first document in the array with that username.
     //Because the username value sits in the login section of the user data we use login.username
@@ -72,10 +72,15 @@ app.get('/shop', function (req, res) {
         "login.username": uname
     }, function (err, result) {
         if (err) throw err;
-        console.log(uname + ":" + result);
-        //finally we just send the result to the user page as "user"
-        res.render('pages/shop', {
-            user: result
+        //get the product collection
+        db.collection('product').find().toArray(function (err, presult) {
+            //finally we just send the result to the user page as "user"
+            res.render('pages/shop', {
+                user: result,
+                product: presult
+            })
+            console.log(user);
+            console.log(product);
         })
     });
 
@@ -87,7 +92,7 @@ app.get('/admin', function (req, res) {
         res.redirect('pages/login');
         return;
     }
-    //get the requested user based on their username, eg /profile?username=dioreticllama
+    //get the requested user based on their username,
     var uname = req.query.username;
     db.collection('users').findOne({
         "login.username": uname
@@ -102,11 +107,11 @@ app.get('/admin', function (req, res) {
 });
 
 //logs user out then redirects to home page
-app.get('/logout', function(req, res) {
+app.get('/logout', function (req, res) {
     req.session.loggedin = false;
     req.session.destroy();
     res.redirect('/login');
-  });
+});
 
 //********** POST ROUTES - Deal with processing data from forms ***************************
 
