@@ -138,3 +138,15 @@ app.post('/dologin', function (req, res) {
 });
 
 
+app.post('/updateprice',function(req,res){
+    var productname = req.body.pname;
+    console.log(productname);
+    if ($_POST['action'] == 'buy'){
+        //increase by 5
+
+    }else {
+        //decrease by 5
+
+    }
+})
+
