@@ -60,25 +60,25 @@ app.get('/logout', function (req, res) {
 
 //this is our shop route, it takes in a username and uses that to search the database for a specific user
 app.get('/shop', function (req, res) {
-    if (!req.session.loggedin) { 
-      res.redirect('/login'); 
-      return; 
+    if (!req.session.loggedin) {
+        res.redirect('/login');
+        return;
     }
     //get the requested user based on their username, eg /profile?username=dioreticllama
     //console.log(uname+ ":" + result);
     var currentuser = req.session.currentuser;
-    db.collection('users').findOne({ "login.username": currentuser },function (err, result) {
-      if (err) throw err;
-      
-      db.collection('product').find().toArray(function (err, presult) {
-        res.render('pages/shop', {
-          user: result,
-          productarray: presult
+    db.collection('users').findOne({ "login.username": currentuser }, function (err, result) {
+        if (err) throw err;
+
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                user: result,
+                productarray: presult
+            })
         })
-      })
     });
-  });
-  
+});
+
 
 //this is the admin route. should only be accessed by admin
 app.get('/admin', function (req, res) {
@@ -138,15 +138,28 @@ app.post('/dologin', function (req, res) {
 });
 
 
-app.post('/updateprice',function(req,res){
-    var productname = req.body.pname;
+app.post('/updateprice', function (req, res) {
+    var productname = document.getElementById('pname')
+    var oldprice = parseInt(document.getElementById('pprice'))
+    var query = { name: productname };
     console.log(productname);
-    if ($_POST['action'] == 'buy'){
+    if ($_POST['action'] == 'buy') {
         //increase by 5
-
-    }else {
+        var newprice = oldprice + 5;
+        var newvalue = { $set: { price: newprice } };
+        db.collection('product').updateOne(query, newvalue, function (err, result) {
+            if (err) throw err;
+           console.log('error')
+        });
+    } else {
         //decrease by 5
+        var newprice = oldprice - 5;
+        var newvalue = { $set: { price: newprice } };
+        db.collection('product').updateOne(query, newvalue, function (err, result) {
+            if (err) throw err;
+            console.log('error')
+        });
 
-    }
+    };
 })
 
