@@ -139,8 +139,8 @@ app.post('/dologin', function (req, res) {
 
 
 app.post('/updateprice', function (req, res) {
-    var productname = $('#pname');
-    var oldprice = parseInt($('#pprice'))
+    var productname = req.body.pname;
+    var oldprice = parseInt(req.body.pprice);
     var query = { name: productname };
     console.log(productname);
     if ($_POST['action'] == 'buy') {

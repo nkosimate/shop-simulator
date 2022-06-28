@@ -27,7 +27,7 @@
         <div id="p1">
             <h1 id="pname"> <%= product.name %></h1>
             <form action="/updateprice" method="POST" id="myform">
-                <label for="productprice" id="pprice"><%= product.price %></label><br>
+                <label for="productprice" id="pprice" name="pprice"><%= product.price %></label><br>
                 <label for="img" id="img"><img src="<%= product.img %>" alt="<%= product.name %>" width="220" height="220"></label><br>
             </form>
         </div>
