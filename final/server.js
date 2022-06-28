@@ -143,7 +143,8 @@ app.post('/updateprice', function (req, res) {
     var oldprice = parseInt(req.body.pprice);
     var query = { name: productname };
     console.log(productname);
-    if ($_POST['action'] == 'buy') {
+    console.log(oldprice);
+    if ('action' == 'buy') {
         //increase by 5
         var newprice = oldprice + 5;
         var newvalue = { $set: { price: newprice } };
