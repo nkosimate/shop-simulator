@@ -4,6 +4,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const dom = new JSDOM.fromFile("views/pages/shop.ejs").then(dom => {
+    console.log(dom.serialize());
+});;
+
+
 
 
 app.use(express.static('public'));
@@ -136,9 +143,10 @@ app.post('/dologin', function (req, res) {
             }
         }
         //otherwise send them back to login
-        else { 
+        else {
             console.log('login fail');
-            res.redirect('/login') }
+            res.redirect('/login')
+        }
     });
 });
 
@@ -153,16 +161,16 @@ app.post('/updateprice', function (req, res) {
         var newprice = oldprice + 5;
         var newvalue = { $set: { price: newprice } };
         //db.collection('product').updateOne(query, newvalue, function (err, result) {
-            //if (err) throw err;
-           //console.log('error')
-       // });
+        //if (err) throw err;
+        //console.log('error')
+        // });
     } else {
         //decrease by 5
         //var newprice = oldprice - 5;
         //var newvalue = { $set: { price: newprice } };
         //db.collection('product').updateOne(query, newvalue, function (err, result) {
-            //if (err) throw err;
-            //console.log('error')
+        //if (err) throw err;
+        //console.log('error')
         //});
 
     };
