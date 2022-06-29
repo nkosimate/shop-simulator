@@ -1,21 +1,17 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/shop";
 const express = require('express');
-//const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-const dom = new JSDOM(response.body);
-console.log(dom.window.document.querySelector('title').textContent);
 
 
 app.use(express.static('public'));
 
 //code to tell express we want to read POSTED forms
-//app.use(bodyParser.urlencoded({
-    //extended: true
-//}))
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
 
 //this tells express we are using sesssions. These are variables that only belong to one user of the site at a time.
 app.use(session({ secret: 'example' }));
