@@ -4,8 +4,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
-var jsdom = require('jsdom');
-$ = require('jquery')(new jsdom.JSDOM().window);
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const dom = new JSDOM(response.body);
+console.log(dom.window.document.querySelector('title').textContent);
 
 
 app.use(express.static('public'));
