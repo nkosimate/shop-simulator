@@ -144,7 +144,7 @@ app.post('/updateprice', function (req, res) {
     var productname = req.body.pname;
     var oldprice = parseInt(req.body.pprice);
     var query = { name: productname };
-    console.log($(pprice));
+    console.log($('pprice'));
     if ('action' == 'buy') {
         //increase by 5
         var newprice = oldprice + 5;
