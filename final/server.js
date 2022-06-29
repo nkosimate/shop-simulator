@@ -149,18 +149,18 @@ app.post('/updateprice', function (req, res) {
         //increase by 5
         var newprice = oldprice + 5;
         var newvalue = { $set: { price: newprice } };
-        db.collection('product').updateOne(query, newvalue, function (err, result) {
-            if (err) throw err;
-           console.log('error')
-        });
+        //db.collection('product').updateOne(query, newvalue, function (err, result) {
+            //if (err) throw err;
+           //console.log('error')
+       // });
     } else {
         //decrease by 5
-        var newprice = oldprice - 5;
-        var newvalue = { $set: { price: newprice } };
-        db.collection('product').updateOne(query, newvalue, function (err, result) {
-            if (err) throw err;
-            console.log('error')
-        });
+        //var newprice = oldprice - 5;
+        //var newvalue = { $set: { price: newprice } };
+        //db.collection('product').updateOne(query, newvalue, function (err, result) {
+            //if (err) throw err;
+            //console.log('error')
+        //});
 
     };
 })
