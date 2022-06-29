@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
-$ = require('jquery')(require("jsdom").jsdom().parentWindow);
+$ = require('jquery');
 
 
 app.use(express.static('public'));
