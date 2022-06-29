@@ -6,7 +6,7 @@ const session = require('express-session');
 const app = express();
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const dom = new JSDOM.fromFile("views/pages/shop.ejs").then(dom => {
+JSDOM.fromFile("views/pages/shop.ejs").then(dom => {
     console.log(dom.serialize());
 });;
 
