@@ -128,13 +128,17 @@ app.post('/dologin', function (req, res) {
         if (result.login.password == pword) {
             req.session.loggedin = true;
             if (uname == "admin") {
+                console.log('admin has loged in');
                 res.redirect('/admin')
             } else {
+                console.log('user has loged in');
                 res.redirect('/shop')
             }
         }
         //otherwise send them back to login
-        else { res.redirect('/login') }
+        else { 
+            console.log('login fail');
+            res.redirect('/login') }
     });
 });
 
