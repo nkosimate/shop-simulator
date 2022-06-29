@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
+const utf8Encoder = new TextEncoder();
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const dom = new JSDOM(response.body);
