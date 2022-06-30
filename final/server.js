@@ -75,7 +75,7 @@ app.get('/shop', function (req, res) {
         console.log(result);
         db.collection('product').find().toArray(function (err, presult) {
             res.render('pages/shop', {
-                user: result,
+                //user: result,
                 productarray: presult
             })
 
