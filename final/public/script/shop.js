@@ -1,4 +1,4 @@
-function onclick() {
+function update() {
     //var oldPriceText = document.getElementById('pprice');
     //var intoldprice = parseInt(oldPriceText);
 
