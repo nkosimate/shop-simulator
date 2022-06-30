@@ -165,8 +165,8 @@ app.post('/buyproduct1', function (req, res) {
             db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalueProduct, function (err, result) {
                 if (err) throw err;
             });
-            db.collection('users').updateOne({ "name": currentuser },newvalueStock, function (err, result) {
-                if(err) throw err;
+            db.collection('users').updateOne({ "name": currentuser }, newvalueStock, function (err, result) {
+                if (err) throw err;
                 console.log('user stock updated');
             });
             db.collection('users').findOne({ "name": currentuser }, function (err, result) {
@@ -187,38 +187,50 @@ app.post('/buyproduct1', function (req, res) {
 
 app.post('/sellproduct1', function (req, res) {
     var currentuser = req.session.currentuser;
-    db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1 }, function (err, userresults){
-        var stockresult =Object.values(userresults);
-        var stockvalue =Object.values(stockresult[1]);
-        console.log(typeof stockresult);
+    db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1 }, function (err, userresults) {
+        var stockresult = Object.values(userresults);
+        var stockvalue = Object.values(stockresult[1]);
+        var stockvalueInt = parseInt(stockvalue);
+        if (stockvalueInt > 0) {
+            db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
+                if (err) throw err;
+                var results = Object.values(result);
+                //console.log("the old price");
+                var oldprice = results[1];
+                var newPrice = oldprice - 5;
+                //console.log(newPrice)
+                //update price
+                //update stock p1, balance and total in user db for that user
+                var resultsforUser = Object.values(userresults);
+                var newBalance = resultsforUser[1] - oldprice;
+                var newStock = stockvalueInt - 1;
+                var newTotal = resultsforUser[3] + 150;
+                var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
+                var newvalue = { $set: { price: newPrice } };
+                db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalue, function (err, result) {
+                    if (err) throw err;
+                })
+                db.collection('users').updateOne({ "name": currentuser }, newvalueStock, function (err, result) {
+                    if (err) throw err;
+                    console.log('user stock updated');
+                });
+                var currentuser = req.session.currentuser;
+                db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+                    if (err) throw err;
+                    //console.log(result);
+                    db.collection('product').find().toArray(function (err, presult) {
+                        res.render('pages/shop', {
+                            user: result,
+                            productarray: presult
+                        })
+
+                    })
+                });
+            });
+        }
 
     });
-    // db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
-    //     if (err) throw err;
-    //     var results = Object.values(result);
-    //     //console.log("the old price");
-    //     var oldprice = results[1];
-    //     var newPrice = oldprice - 5;
-    //     //console.log(newPrice)
-    //     //update price
-    //     var newvalue = { $set: { price: newPrice } };
-    //     db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalue, function (err, result) {
-    //         if (err) throw err;
 
-    //     })
-    //     var currentuser = req.session.currentuser;
-    //     db.collection('users').findOne({ "name": currentuser }, function (err, result) {
-    //         if (err) throw err;
-    //         //console.log(result);
-    //         db.collection('product').find().toArray(function (err, presult) {
-    //             res.render('pages/shop', {
-    //                 user: result,
-    //                 productarray: presult
-    //             })
-
-    //         })
-    //     });
-    // });
 })
 
 app.post('/buyproduct2', function (req, res) {
