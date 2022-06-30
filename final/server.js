@@ -150,7 +150,7 @@ app.post('/dologin', function (req, res) {
 
 app.post('/updateprice', function (req, res) {
     //var productname = shopPageDom.getElementBYId('pname')
-    console.log($('#pname'));
+    //console.log($('#pname'));
     //var oldprice = parseInt(req.body.pprice);
     //var query = { name: productname };
     //console.log($('pprice'));
