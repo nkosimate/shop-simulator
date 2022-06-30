@@ -96,7 +96,7 @@ app.get('/admin', function (req, res) {
         //finally we just send the result to the user page as "user"
         console.log(result);
         res.render('pages/admin', {
-            //user: result
+            user: result
         })
     });
 });
