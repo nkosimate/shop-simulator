@@ -5,9 +5,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
 
-
-
-
 app.use(express.static('public'));
 
 //code to tell express we want to read POSTED forms
@@ -170,7 +167,7 @@ app.post('/buyproduct1', function (req, res) {
                     user: result,
                     productarray: presult
                 })
-    
+
             })
         });
     });
@@ -191,11 +188,18 @@ app.post('/sellproduct1', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -213,11 +217,18 @@ app.post('/buyproduct2', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -235,11 +246,18 @@ app.post('/sellproduct2', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -257,11 +275,18 @@ app.post('/buyproduct3', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -279,11 +304,18 @@ app.post('/sellproduct3', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -301,11 +333,18 @@ app.post('/buyproduct4', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -323,11 +362,18 @@ app.post('/sellproduct4', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -345,11 +391,18 @@ app.post('/buyproduct5', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -367,11 +420,18 @@ app.post('/sellproduct5', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -390,11 +450,18 @@ app.post('/buyproduct6', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -412,11 +479,18 @@ app.post('/sellproduct6', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -434,11 +508,18 @@ app.post('/buyproduct7', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -456,11 +537,18 @@ app.post('/sellproduct7', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -478,11 +566,18 @@ app.post('/buyproduct8', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -500,11 +595,18 @@ app.post('/sellproduct8', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -522,11 +624,18 @@ app.post('/buyproduct9', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -544,11 +653,18 @@ app.post('/sellproduct9', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -566,11 +682,18 @@ app.post('/buyproduct10', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
@@ -588,11 +711,18 @@ app.post('/sellproduct10', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+
             })
-        })
+        });
     });
 })
 
