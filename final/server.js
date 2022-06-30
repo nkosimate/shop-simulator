@@ -202,9 +202,15 @@ app.post('/sellproduct1', function (req, res) {
             var stockValue = Object.values(resultsforUser[2]);
             var newStock = parseInt(stockValue) - 1;
             var newTotal = resultsforUser[3] - 150;
-            console.log("new balance = " + newBalance + " of data type " + typeof newBalance )
-            console.log("new stock = " + newStock + " of data type " + typeof newStock )
-            console.log("new Total = " + newTotal + " of data type " + typeof newTotal )
+            var newvalueProduct = { $set: { price: newPrice } };
+            var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
+            db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalueProduct, function (err, result) {
+                if (err) throw err;
+            });
+            db.collection('users').updateOne({ "name": currentuser }, newvalueStock, function (err, result) {
+                if (err) throw err;
+                console.log('user stock updated');
+            });
             db.collection('users').findOne({ "name": currentuser }, function (err, result) {
                 if (err) throw err;
                 //console.log(result);
