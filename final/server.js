@@ -195,7 +195,7 @@ app.post('/sellproduct1', function (req, res) {
         var newPrice = oldprice - 5;
         var currentuser = req.session.currentuser;
         //update stock p1, balance and total in user db for that user
-        db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1, "balance": 1, "total": 1 }, function (err, userres) {
+        db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1, "balance": 1, "total": 1 }, function (err, userresults) {
             if (err) throw err;
             var resultsforUser = Object.values(userresults);
             var newBalance = resultsforUser[1] + oldprice;
