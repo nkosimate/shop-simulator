@@ -22,19 +22,17 @@
             </ul>
         </nav>
     </header>
-    <% productarray.forEach(function(product) {%>
     <div class="product">
         <div id="p1">
             <h1 id="pname"> <%= product.name %></h1>
-            <form action="/updateprice" method="POST" id="myform">
+            <form action="/buyproduct1" method="POST" id="myform">
                 <label for="productprice" id="pprice" name="pprice"><%= product.price %></label><br>
-                <label for="img" id="img"><img src="<%= product.img %>" alt="<%= product.name %>" width="220" height="220"></label><br>
+                <label for="img" id="img"><img src="" alt="" width="220" height="220"></label><br>
             </form>
         </div>
         <button class="btn" type="submit" form="myform" value="buy" onclick="update()">Buy</button>
-        <button class="btn" type="submit" form="myform" value="sell" onclick="update()">Sell</button>
+        <button class="btn" type="submit" form="myform" value="sell" onclick="update()" formaction="/sellproduct1">Sell</button>
     </div>
-    <% }); %>
 
 
 </body>
