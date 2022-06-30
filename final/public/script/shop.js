@@ -1,15 +1,8 @@
-function onclick(){
-    var oldPriceText = document.getElementById('pprice');
-    var intoldprice = parseInt(oldPriceText);
-   
-if ($_POST['action'] == 'buy') {
-    console.log("buy has been pressed")
-    //price goes up by 
-    var newprice = intoldprice + 5;
-    document.getElementById('pprice').innerText.replace(oldPriceText,newprice);
-} else {
-    var newprice = intOldPrice -5;
-    //price goes down by 5
-    document.getElementById('pprice').innerText.replace(oldPriceText,newprice);
-}
+function onclick() {
+    //var oldPriceText = document.getElementById('pprice');
+    //var intoldprice = parseInt(oldPriceText);
+
+    if (document.getElementById('buybtn1').clicked == true) {
+        alert("button was clicked");
+    }
 }
