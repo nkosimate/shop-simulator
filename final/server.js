@@ -187,10 +187,10 @@ app.post('/buyproduct1', function (req, res) {
 
 app.post('/sellproduct1', function (req, res) {
     var currentuser = req.session.currentuser;
-    db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1 }, function (err, userresults) {
-        var stockresult = Object.values(userresults);
-        var stockvalue = Object.values(stockresult[1]);
-        var stockvalueInt = parseInt(stockvalue);
+    db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1, "balance": 1, "total": 1 }, function (err, userresults) {
+        var resultsforUser = Object.values(userresults);
+        var stockresult = Object.values(resultsforUser[2]);
+        var stockvalueInt = parseInt(stockresult);
         if (stockvalueInt > 0) {
             db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
                 if (err) throw err;
@@ -201,8 +201,7 @@ app.post('/sellproduct1', function (req, res) {
                 //console.log(newPrice)
                 //update price
                 //update stock p1, balance and total in user db for that user
-                var resultsforUser = Object.values(userresults);
-                var newBalance = resultsforUser[1] - oldprice;
+                var newBalance = resultsforUser[1] + oldprice;
                 var newStock = stockvalueInt - 1;
                 var newTotal = resultsforUser[3] + 150;
                 var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
@@ -227,7 +226,8 @@ app.post('/sellproduct1', function (req, res) {
                     })
                 });
             });
-        }
+        } else
+            alert("You don't own any to sell");
 
     });
 
