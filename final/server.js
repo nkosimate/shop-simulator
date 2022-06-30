@@ -78,7 +78,7 @@ app.get('/shop', function (req, res) {
                 user: result,
                 productarray: presult
             })
-           
+
         })
     });
 });
@@ -148,13 +148,16 @@ app.post('/dologin', function (req, res) {
 
 
 app.post('/buyproduct1', function (req, res) {
-    var oldPriceString = db.collection('users').findOne({"name":"Yeezt 720"});
-    console.log("the old price");
-    console.log(oldPriceString);
+    var oldPriceString = db.collection('users').findOne({ "name": "Yeezt 720" }, function (err, result) {
+        if (err) throw err;
+        console.log("the old price");
+        console.log(oldPriceString);
+    });
 
-   /*  var oldPriceInt = parseInt(oldPriceString);
-    var newPrice = oldPriceInt + 5;
-    db.collection('product').findOneAndUpdate({name:''},{$set:{price:newPrice}}) */
+
+    /*  var oldPriceInt = parseInt(oldPriceString);
+     var newPrice = oldPriceInt + 5;
+     db.collection('product').findOneAndUpdate({name:''},{$set:{price:newPrice}}) */
     db.collection('product').find().toArray(function (err, presult) {
         res.render('pages/shop', {
             productarray: presult
