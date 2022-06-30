@@ -148,6 +148,7 @@ app.post('/buyproduct1', function (req, res) {
     db.collection('users').findOne({ "name": "admin" }, { "start": 1 }, function (err, shouldWeStart) {
         if (err) throw err;
         var shouldWeStart1 = parseInt(Object.values(shouldWeStart));
+        console.log("the value of should we start" + shouldWeStart1)
         if (shouldWeStart1 == 0) {
             console.log("don't start")
         } else {
