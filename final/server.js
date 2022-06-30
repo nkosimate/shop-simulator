@@ -154,15 +154,15 @@ app.post('/updateprice', function (req, res) {
     //var oldprice = parseInt(req.body.pprice);
     //var query = { name: productname };
     //console.log($('pprice'));
-    if ('action' == 'buy') {
+    //if ('action' == 'buy') {
         //increase by 5
-        var newprice = oldprice + 5;
-        var newvalue = { $set: { price: newprice } };
+        //var newprice = oldprice + 5;
+        //var newvalue = { $set: { price: newprice } };
         //db.collection('product').updateOne(query, newvalue, function (err, result) {
         //if (err) throw err;
         //console.log('error')
         // });
-    } else {
+    //} else {
         //decrease by 5
         //var newprice = oldprice - 5;
         //var newvalue = { $set: { price: newprice } };
@@ -171,7 +171,8 @@ app.post('/updateprice', function (req, res) {
         //console.log('error')
         //});
 
-    };
+    //};
+    res.render('pages/shop')
 
 })
 
