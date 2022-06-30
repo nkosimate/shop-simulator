@@ -158,7 +158,7 @@ app.post('/buyproduct1', function (req, res) {
             var resultsforUser = Object.values(userresults);
             var newBalance = resultsforUser[1] - oldprice;
             var stockValue = Object.values(resultsforUser[2]);
-            var newStock = stockValue + 1;
+            var newStock = parseInt(stockValue) + 1;
             var newTotal = resultsforUser[3] + 150;
             var newvalueProduct = { $set: { price: newPrice } };
             var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
