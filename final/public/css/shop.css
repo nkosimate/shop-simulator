@@ -56,13 +56,49 @@ li a {
     border: 2px solid;
     position: inherit;
 }
+#p2 {
+    border: 2px solid;
+    position: inherit;
+}
+#p3 {
+    border: 2px solid;
+    position: inherit;
+}
+#p4 {
+    border: 2px solid;
+    position: inherit;
+}
+#p5 {
+    border: 2px solid;
+    position: inherit;
+}
+#p6 {
+    border: 2px solid;
+    position: inherit;
+}
+#p7 {
+    border: 2px solid;
+    position: inherit;
+}
+#p8 {
+    border: 2px solid;
+    position: inherit;
+}
+#p9 {
+    border: 2px solid;
+    position: inherit;
+}
+#p10 {
+    border: 2px solid;
+    position: inherit;
+}
 
-#img{
+.img{
     padding-left: 10px;
 
 }
 
-#pprice{
+.pprice{
     font-size: 50px;
     font-weight:bold;
     padding-left: 75px;
