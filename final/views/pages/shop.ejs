@@ -14,8 +14,8 @@
         <nav>
             <ul>
                 <li id="hi">Hi <%= user.name %></li>
-                <li id="money">£100000</li>
-                <li id="team">Team 1</li>
+                <li id="money">£<%= user.balance %></li>
+                <li id="team">Team <%= user.team %></li>
                 <a href="/logout">
                     <li style="float:right"><button id="logbtn">Logout</button></li>
                 </a>
