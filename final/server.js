@@ -93,7 +93,7 @@ app.get('/admin', function (req, res) {
     var currentuser = req.session.currentuser;
     db.collection('users').findOne({ "login.username": currentuser }, function (err, result) {
         if (err) throw err;
-        res.render('pages/profile', {
+        res.render('pages/admin', {
             user: result,
         })
 
