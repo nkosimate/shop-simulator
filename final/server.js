@@ -195,23 +195,16 @@ app.post('/sellproduct1', function (req, res) {
         var newPrice = oldprice - 5;
         var currentuser = req.session.currentuser;
         //update stock p1, balance and total in user db for that user
-        db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1, "balance": 1, "total": 1 }, function (err, userresults) {
+        db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1, "balance": 1, "total": 1 }, function (err, userres) {
             if (err) throw err;
             var resultsforUser = Object.values(userresults);
             var newBalance = resultsforUser[1] + oldprice;
             var stockValue = Object.values(resultsforUser[2]);
             var newStock = parseInt(stockValue) - 1;
             var newTotal = resultsforUser[3] - 150;
-            var newvalueProduct = { $set: { price: newPrice } };
-            var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
-            db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalueProduct, function (err, result) {
-                if (err) throw err;
-            })
-            db.collection('users').updateOne({ "name": currentuser }, newvalueStock, function (err, result) {
-                if (err) throw err;
-                console.log('user stock updated');
-            });
-            var currentuser = req.session.currentuser;
+            console.log("new balance = " + newBalance + " of data type " + typeof newBalance )
+            console.log("new stock = " + newStock + " of data type " + typeof newStock )
+            console.log("new Total = " + newTotal + " of data type " + typeof newTotal )
             db.collection('users').findOne({ "name": currentuser }, function (err, result) {
                 if (err) throw err;
                 //console.log(result);
@@ -223,7 +216,8 @@ app.post('/sellproduct1', function (req, res) {
 
                 })
             });
-        });
+
+        })
 
     });
 
