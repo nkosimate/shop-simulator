@@ -779,7 +779,7 @@ app.post('/start', function (req, res) {
         $set: { start: 1 }, function(err, result) {
             if (err) throw err;
             req.session.currentuser = uname;
-            res.render('/admin')
+            res.redirect('/admin')
         }
     });
 })
@@ -789,9 +789,10 @@ app.post('/stop', function (req, res) {
     db.collection('users').updateOne({ "name": "admin" }, {
         $set: { start: 0 }, function(err, result) {
             if (err) throw err;
-            req.session.currentuser = uname;
-            res.render('/admin')
             console.log("stop")
+            req.session.currentuser = uname;
+            res.redirect('/admin')
+            
         }
     });
 })
