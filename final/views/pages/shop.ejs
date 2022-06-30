@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <link rel="stylesheet" href="css/shop.css">
-    <script src="script/shop.js"></script>
 </head>
 
 <body>
@@ -31,9 +30,14 @@
                 <label for="img" id="img"><img src="" alt="" width="220" height="220"></label><br>
             </form>
         </div>
-        <button class="btn" type="submit" form="myform" value="buy"  id="buybtn1">Buy</button>
+        <button class="btn" type="submit" form="myform" value="buy" onclick="myFunction()">Buy</button>
         <button class="btn" type="submit" form="myform" value="sell"  formaction="/sellproduct1" id="sellbtn1">Sell</button>
     </div>
+    <script>
+        function myFunction() {
+          alert("buy");
+        }
+        </script>
 
 
 </body>
