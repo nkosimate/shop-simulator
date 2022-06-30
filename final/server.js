@@ -145,42 +145,50 @@ app.post('/dologin', function (req, res) {
 
 
 app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
+    db.collection('users').findOne({ "name": "admin" }, { "start": 1 }, function (err, shouldWeStart) {
         if (err) throw err;
-        var results = Object.values(result);
-        var oldprice = results[1];
-        var newPrice = oldprice + 5;
-        var currentuser = req.session.currentuser;
-        //update price in product db
-        //update stock p1, balance and total in user db for that user
-        db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1, "balance": 1, "total": 1 }, function (err, userresults) {
-            if (err) throw err;
-            var resultsforUser = Object.values(userresults);
-            var newBalance = resultsforUser[1] - oldprice;
-            var stockValue = Object.values(resultsforUser[2]);
-            var newStock = parseInt(stockValue) + 1;
-            var newTotal = resultsforUser[3] + 150;
-            var newvalueProduct = { $set: { price: newPrice } };
-            var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
-            db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalueProduct, function (err, result) {
+        var shouldWeStart1 = parseInt(Object.values(shouldWeStart));
+        if (shouldWeStart1 == 0) {
+            console.log("don't start")
+        } else {
+            db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
                 if (err) throw err;
-            });
-            db.collection('users').updateOne({ "name": currentuser }, newvalueStock, function (err, result) {
-                if (err) throw err;
-                console.log('user stock updated');
-            });
-            db.collection('users').findOne({ "name": currentuser }, function (err, result) {
-                if (err) throw err;
-                //console.log(result);
-                db.collection('product').find().toArray(function (err, presult) {
-                    res.render('pages/shop', {
-                        user: result,
-                        productarray: presult
-                    })
+                var results = Object.values(result);
+                var oldprice = results[1];
+                var newPrice = oldprice + 5;
+                var currentuser = req.session.currentuser;
+                //update price in product db
+                //update stock p1, balance and total in user db for that user
+                db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1, "balance": 1, "total": 1 }, function (err, userresults) {
+                    if (err) throw err;
+                    var resultsforUser = Object.values(userresults);
+                    var newBalance = resultsforUser[1] - oldprice;
+                    var stockValue = Object.values(resultsforUser[2]);
+                    var newStock = parseInt(stockValue) + 1;
+                    var newTotal = resultsforUser[3] + 150;
+                    var newvalueProduct = { $set: { price: newPrice } };
+                    var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
+                    db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalueProduct, function (err, result) {
+                        if (err) throw err;
+                    });
+                    db.collection('users').updateOne({ "name": currentuser }, newvalueStock, function (err, result) {
+                        if (err) throw err;
+                        console.log('user stock updated');
+                    });
+                    db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+                        if (err) throw err;
+                        //console.log(result);
+                        db.collection('product').find().toArray(function (err, presult) {
+                            res.render('pages/shop', {
+                                user: result,
+                                productarray: presult
+                            })
 
-                })
+                        })
+                    });
+                });
             });
-        });
+        }
     });
 })
 
