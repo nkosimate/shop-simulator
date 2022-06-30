@@ -196,7 +196,7 @@ app.post('/sellproduct1', function (req, res) {
                 if (err) throw err;
                 var results = Object.values(result);
                 var oldprice = results[1];
-                var newPrice = oldprice + 5;
+                var newPrice = oldprice - 5;
                 console.log(oldprice)
                 //update price
                 //update stock p1, balance and total in user db for that user
