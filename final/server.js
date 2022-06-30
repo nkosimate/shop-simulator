@@ -151,7 +151,7 @@ app.post('/buyproduct1', function (req, res) {
    db.collection('product').findOne({ "name": "Yeezt 720"}, { "price": 1},function (err, result) {
         if (err) throw err;
         console.log("the old price");
-        console.log(result.toArray().toString());
+        console.log(result.toString());
     });
    
 
