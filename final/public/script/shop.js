@@ -3,6 +3,7 @@ function onclick(){
     var intoldprice = parseInt(oldPriceText);
    
 if ($_POST['action'] == 'buy') {
+    console.log("buy has been pressed")
     //price goes up by 
     var newprice = intoldprice + 5;
     document.getElementById('pprice').innerText.replace(oldPriceText,newprice);
