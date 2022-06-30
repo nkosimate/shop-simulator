@@ -148,7 +148,7 @@ app.post('/dologin', function (req, res) {
 
 
 app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+    db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -157,7 +157,7 @@ app.post('/buyproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -171,7 +171,7 @@ app.post('/buyproduct1', function (req, res) {
 
 
 app.post('/sellproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezy 720" }, { "price": 1 }, function (err, result) {
+    db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -180,7 +180,7 @@ app.post('/sellproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezy 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
