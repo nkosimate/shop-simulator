@@ -1,8 +1,7 @@
-function update() {
-    //var oldPriceText = document.getElementById('pprice');
-    //var intoldprice = parseInt(oldPriceText);
+// Get the button to open Own Quote pop up//
+var btn = document.getElementById("buybtn1");
 
-    if (document.getElementById('buybtn1').clicked == true) {
-        alert("button was clicked");
-    }
+// When the user clicks the button, open the pop up//
+btn.onclick = function () {
+    alert("button was clicked");
 }
