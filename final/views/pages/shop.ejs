@@ -24,7 +24,7 @@
     </header>
     <div class="product">
         <div id="p1">
-            <h1 id="pname"> <%= productarray[0].name %></h1>
+            <h1 id="pname"> <%= productarray[0].name %>             Owned:<%= productarray[0].stock.p1 %></h1>
             <form action="/buyproduct1" method="POST" id="myform1">
                 <label for="productprice" class="pprice" name="pprice"><%= productarray[0].price %></label><br>
                 <label for="img" class="img"><img src="" alt="" width="220" height="220"></label><br>
@@ -132,7 +132,9 @@
         <button class="btn" type="submit" form="myform10" value="buy" >Buy</button>
         <button class="btn" type="submit" form="myform10" value="sell"  formaction="/sellproduct10">Sell</button>
     </div>
-   
+   <script>
+    
+   </script>
 
 
 </body>
