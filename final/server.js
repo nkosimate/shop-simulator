@@ -758,6 +758,7 @@ app.post('/start', function (req, res) {
             if (err) throw err;
             req.session.currentuser = uname;
             res.render('/admin')
+            console.log("start");
         }
     });
 })
@@ -768,6 +769,7 @@ app.post('/stop', function (req, res) {
             if (err) throw err;
             req.session.currentuser = uname;
             res.render('/admin')
+            console.log("stop")
         }
     });
 })
