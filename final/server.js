@@ -72,7 +72,7 @@ app.get('/shop', function (req, res) {
     var currentuser = req.session.currentuser;
     db.collection('users').findOne({ "login.username": currentuser }, function (err, result) {
         if (err) throw err;
-
+        console.log(result);
         db.collection('product').find().toArray(function (err, presult) {
             res.render('pages/shop', {
                 user: result,
