@@ -160,9 +160,7 @@ app.post('/buyproduct1', function (req, res) {
             var newBalance = resultsforUser[1] - oldprice;
             var newStock = resultsforUser[2] + 1;
             var newTotal = resultsforUser[3] + 150;
-            console.log("new balance "+newBalance);
-            console.log("new stock "+newStock);
-            console.log("new total "+newTotal);
+            console.log("stock.p1 is "+typeof resultsforUser[2]);
         })
         /* var newvalueProduct = { $set: { price: newPrice } };
         var newvalueStock =  { $set:{ stock.p1: }};
