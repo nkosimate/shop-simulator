@@ -155,8 +155,9 @@ app.post('/buyproduct1', function (req, res) {
         //console.log("the old price");
         oldprice = results[1];
     });
-    var newPrice = parseInt(oldprice) + 5;
-    console.log(newPrice + "   this is the new p")
+    console.log(oldprice);
+    //var newPrice = parseInt(oldprice) + 5;
+    //console.log(newPrice + "   this is the new p")
     //db.collection('product').findOneAndUpdate({ name: '' }, { $set: { price: newPrice } })
     db.collection('product').find().toArray(function (err, presult) {
         res.render('pages/shop', {
