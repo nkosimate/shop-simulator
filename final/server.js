@@ -145,20 +145,26 @@ app.post('/dologin', function (req, res) {
 
 
 app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
+    db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 ,"stock.p1":1,"balance":1,"total":1}, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
-        //console.log("the old price");
-        var oldprice = results[1];
-        var newPrice = oldprice + 5;
+        console.log("the result");
+        console.log(result);
+        //var oldprice = results[1];
+        //var newPrice = oldprice + 5;
         //console.log(newPrice)
-        //update price
-        var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalue, function (err, result) {
+        //update price in product db
+        //update stock p1, balance and total in user db for that user
+        //update totals.user for admin in user db
+        /* var newvalueProduct = { $set: { price: newPrice } };
+        var newvalueStock =  { $set:{ stock.p1: }};
+        db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalueProduct, function (err, result) {
             if (err) throw err;
-
         })
         var currentuser = req.session.currentuser;
+        db.collection('users').updateOne({ "name": currentuser }, function (err, result) {
+
+        });
         db.collection('users').findOne({ "name": currentuser }, function (err, result) {
             if (err) throw err;
             //console.log(result);
@@ -169,7 +175,7 @@ app.post('/buyproduct1', function (req, res) {
                 })
 
             })
-        });
+        }); */
     });
 })
 
