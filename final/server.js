@@ -152,6 +152,17 @@ app.post('/buyproduct1', function (req, res) {
         console.log("the value of should we start" + shouldWeStart2)
         if (shouldWeStart2 == 0) {
             console.log("don't start")
+            db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+                if (err) throw err;
+                //console.log(result);
+                db.collection('product').find().toArray(function (err, presult) {
+                    res.redirect('pages/shop', {
+                        user: result,
+                        productarray: presult
+                    })
+
+                })
+            });
         } else {
             db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
                 if (err) throw err;
