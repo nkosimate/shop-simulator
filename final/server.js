@@ -90,14 +90,15 @@ app.get('/admin', function (req, res) {
         res.redirect('/login');
         return;
     }
-    var currentuser = req.session.currentuser;
-    console.log("the curent user is =  "  + currentuser);
-    db.collection('users').findOne({ "login.username": currentuser }, function (err, result) {
+    var uname = req.query.username;
+    ;
+    console.log("the curent user is =  " + uname);
+    db.collection('users').findOne({ "login.username": uname }, function (err, result) {
         if (err) throw err;
         //finally we just send the result to the user page as "user"
         console.log(result);
         res.render('pages/admin', {
-            //user: result
+            user: result
         })
     });
 });
