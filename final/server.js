@@ -70,7 +70,7 @@ app.get('/shop', function (req, res) {
     //get the requested user based on their username, eg /profile?username=dioreticllama
     //console.log(uname+ ":" + result);
     var currentuser = req.session.currentuser;
-    db.collection('users').find({ "login.username": currentuser }, function (err, result) {
+    db.collection('users').find({ "name": currentuser }, function (err, result) {
         if (err) throw err;
         console.log(result);
         db.collection('product').find().toArray(function (err, presult) {
