@@ -125,7 +125,7 @@ app.post('/dologin', function (req, res) {
             req.session.loggedin = true;
             if (uname == "admin") {
                 console.log('admin has loged in');
-                res.redirect(307,'/admin')
+                res.redirect(301,'/admin')
             } else {
                 console.log('user has loged in');
                 res.redirect('/shop')
