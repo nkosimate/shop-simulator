@@ -186,6 +186,7 @@ app.post('/buyproduct1', function (req, res) {
 
 
 app.post('/sellproduct1', function (req, res) {
+    var currentuser = req.session.currentuser;
     db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1 }, function (err, userresults){
         var stockresult =Object.values(userresults);
         var stockvalue =Object.values(stockresult[1]);
