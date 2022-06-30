@@ -155,24 +155,30 @@ app.post('/updateprice', function (req, res) {
     //var query = { name: productname };
     //console.log($('pprice'));
     //if ('action' == 'buy') {
-        //increase by 5
-        //var newprice = oldprice + 5;
-        //var newvalue = { $set: { price: newprice } };
-        //db.collection('product').updateOne(query, newvalue, function (err, result) {
-        //if (err) throw err;
-        //console.log('error')
-        // });
+    //increase by 5
+    //var newprice = oldprice + 5;
+    //var newvalue = { $set: { price: newprice } };
+    //db.collection('product').updateOne(query, newvalue, function (err, result) {
+    //if (err) throw err;
+    //console.log('error')
+    // });
     //} else {
-        //decrease by 5
-        //var newprice = oldprice - 5;
-        //var newvalue = { $set: { price: newprice } };
-        //db.collection('product').updateOne(query, newvalue, function (err, result) {
-        //if (err) throw err;
-        //console.log('error')
-        //});
+    //decrease by 5
+    //var newprice = oldprice - 5;
+    //var newvalue = { $set: { price: newprice } };
+    //db.collection('product').updateOne(query, newvalue, function (err, result) {
+    //if (err) throw err;
+    //console.log('error')
+    //});
 
     //};
-    res.render('pages/shop')
 
+
+    db.collection('product').find().toArray(function (err, presult) {
+        res.render('pages/shop', {
+            user: result,
+            productarray: presult
+        })
+    })
 })
 
