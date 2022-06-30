@@ -145,6 +145,7 @@ app.post('/dologin', function (req, res) {
 
 
 app.post('/buyproduct1', function (req, res) {
+    var currentuser = req.session.currentuser;
     db.collection('users').findOne({ "name": "admin" }, { "start": 1 }, function (err, shouldWeStart) {
         if (err) throw err;
         var shouldWeStart1 = Object.values(shouldWeStart);
@@ -169,7 +170,7 @@ app.post('/buyproduct1', function (req, res) {
                 var results = Object.values(result);
                 var oldprice = results[1];
                 var newPrice = oldprice + 5;
-                var currentuser = req.session.currentuser;
+
                 //update price in product db
                 //update stock p1, balance and total in user db for that user
                 db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1, "balance": 1, "total": 1 }, function (err, userresults) {
@@ -792,7 +793,7 @@ app.post('/stop', function (req, res) {
             console.log("stop")
             req.session.currentuser = uname;
             res.redirect('/admin')
-            
+
         }
     });
 })
