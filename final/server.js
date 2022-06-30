@@ -72,7 +72,7 @@ app.get('/shop', function (req, res) {
     var currentuser = req.session.currentuser;
     db.collection('users').findOne({ "name": currentuser }, function (err, result) {
         if (err) throw err;
-        console.log(result);
+        //console.log(result);
         db.collection('product').find().toArray(function (err, presult) {
             res.render('pages/shop', {
                 user: result,
@@ -161,11 +161,18 @@ app.post('/buyproduct1', function (req, res) {
             if (err) throw err;
 
         })
-        db.collection('product').find().toArray(function (err, presult) {
-            res.render('pages/shop', {
-                productarray: presult
+        var currentuser = req.session.currentuser;
+        db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+            if (err) throw err;
+            //console.log(result);
+            db.collection('product').find().toArray(function (err, presult) {
+                res.render('pages/shop', {
+                    user: result,
+                    productarray: presult
+                })
+    
             })
-        })
+        });
     });
 })
 
