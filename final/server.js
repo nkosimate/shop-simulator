@@ -156,8 +156,10 @@ app.post('/buyproduct1', function (req, res) {
         //update totals.user for admin in user db
         db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1, "balance": 1, "total": 1 }, function (err, userresults) {
             if (err) throw err;
+            var variablesforresults = Object.keys(userresults);
             var resultsforUser = Object.values(userresults);
             console.log("the result");
+            console.log(variablesforresults)
             console.log(resultsforUser);
         })
         /* var newvalueProduct = { $set: { price: newPrice } };
