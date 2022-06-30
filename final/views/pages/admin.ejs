@@ -14,8 +14,12 @@
         <nav>
             <ul>
                 <li id="hi"> Hi <%= user.name %></li>
+                <a href="/start">
                 <li><button class="btn" id="startBtn" formaction="/start">Start</button></li>
+            </a>
+            <a href="/stop"></a>
                 <li><button class="btn" id="stopBtn" formaction="/stop">Stop</button></li>
+            </a>
                 <li><button class="btn" id="resetBtn" formaction="/reset">Reset</button></li>
                 <a href="/logout">
                     <li style="float:right"><button class="btn" id="logoutBtn">Logout</button></li>
