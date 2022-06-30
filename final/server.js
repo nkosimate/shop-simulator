@@ -190,7 +190,7 @@ app.post('/sellproduct1', function (req, res) {
     db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1 }, function (err, userresults){
         var stockresult =Object.values(userresults);
         var stockvalue =Object.values(stockresult[1]);
-        console.log(stockresult);
+        console.log(typeof stockresult);
 
     });
     // db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
