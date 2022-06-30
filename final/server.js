@@ -90,7 +90,7 @@ app.get('/admin', function (req, res) {
         res.redirect('/login');
         return;
     }
-    var currentuser = req.session.currentuser;
+    console.log(req.session.currentuser);
     db.collection('users').findOne({ "login.username": currentuser }, function (err, result) {
         if (err) throw err;
         res.render('pages/admin', {
