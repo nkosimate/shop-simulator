@@ -148,7 +148,7 @@ app.post('/dologin', function (req, res) {
 
 
 app.post('/buyproduct1', function (req, res) {
-    var oldPriceString = db.collection('product').findOne({"name":'Yeezt 720'}).price;
+    var oldPriceString = db.collection('product').findOne({"name":'Yeezt 720'}).toString();
     console.log("the old price");
     console.log(oldPriceString);
 
