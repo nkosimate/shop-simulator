@@ -90,11 +90,15 @@ app.get('/admin', function (req, res) {
         res.redirect('/login');
         return;
     }
-    //finally we just send the result to the user page as "user"
-    console.log(req.body.username);
-    res.render('pages/admin', {
-        //user: result
-    })
+    var currentuser = req.session.currentuser;
+    db.collection('users').findOne({ "login.username": currentuser }, function (err, result) {
+        if (err) throw err;
+        //finally we just send the result to the user page as "user"
+        console.log(result);
+        res.render('pages/admin', {
+            //user: result
+        })
+    });
 });
 
 //logs user out then redirects to home page
@@ -125,7 +129,7 @@ app.post('/dologin', function (req, res) {
             req.session.loggedin = true;
             if (uname == "admin") {
                 console.log('admin has loged in');
-                res.redirect(302,'/admin')
+                res.redirect('/admin')
             } else {
                 console.log('user has loged in');
                 res.redirect('/shop')
