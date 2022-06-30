@@ -200,7 +200,7 @@ app.post('/sellproduct1', function (req, res) {
                 console.log(oldprice)
                 //update price
                 //update stock p1, balance and total in user db for that user
-                console.log("finding the user" + resultsforUser);
+                console.log("new stock value" + stockvalueInt);
                 var newBalance = resultsforUser[1] + oldprice;
                 var newStock = stockvalueInt - 1;
                 var newTotal = resultsforUser[3] - 150;
