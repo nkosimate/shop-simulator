@@ -171,7 +171,7 @@ app.post('/buyproduct1', function (req, res) {
 
 
 app.post('/sellproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+    db.collection('product').findOne({ "name": "Yeezy 720" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -180,7 +180,7 @@ app.post('/sellproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Yeezy 720" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -192,8 +192,8 @@ app.post('/sellproduct1', function (req, res) {
     });
 })
 
-app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+app.post('/buyproduct2', function (req, res) {
+    db.collection('product').findOne({ "name": "Balenciaga" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -202,7 +202,7 @@ app.post('/buyproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Balenciaga" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -214,8 +214,30 @@ app.post('/buyproduct1', function (req, res) {
     });
 })
 
-app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+app.post('/sellproduct2', function (req, res) {
+    db.collection('product').findOne({ "name": "Balenciaga" }, { "price": 1 }, function (err, result) {
+        if (err) throw err;
+        var results = Object.values(result);
+        //console.log("the old price");
+        var oldprice = results[1];
+        var newPrice = oldprice - 5;
+        //console.log(newPrice)
+        //update price
+        var newvalue = { $set: { price: newPrice } };
+        db.collection('product').updateOne({ "name": "Balenciaga" }, newvalue, function (err, result) {
+            if (err) throw err;
+
+        })
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                productarray: presult
+            })
+        })
+    });
+})
+
+app.post('/buyproduct3', function (req, res) {
+    db.collection('product').findOne({ "name": "Crocs" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -224,7 +246,7 @@ app.post('/buyproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Crocs" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -236,8 +258,30 @@ app.post('/buyproduct1', function (req, res) {
     });
 })
 
-app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+app.post('/sellproduct3', function (req, res) {
+    db.collection('product').findOne({ "name": "Crocs" }, { "price": 1 }, function (err, result) {
+        if (err) throw err;
+        var results = Object.values(result);
+        //console.log("the old price");
+        var oldprice = results[1];
+        var newPrice = oldprice - 5;
+        //console.log(newPrice)
+        //update price
+        var newvalue = { $set: { price: newPrice } };
+        db.collection('product').updateOne({ "name": "Crocs" }, newvalue, function (err, result) {
+            if (err) throw err;
+
+        })
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                productarray: presult
+            })
+        })
+    });
+})
+
+app.post('/buyproduct4', function (req, res) {
+    db.collection('product').findOne({ "name": "Pandas" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -246,7 +290,7 @@ app.post('/buyproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Pandas" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -258,8 +302,8 @@ app.post('/buyproduct1', function (req, res) {
     });
 })
 
-app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+app.post('/sellproduct4', function (req, res) {
+    db.collection('product').findOne({ "name": "Pandas" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -268,7 +312,7 @@ app.post('/buyproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Pandas" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -280,8 +324,8 @@ app.post('/buyproduct1', function (req, res) {
     });
 })
 
-app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+app.post('/buyproduct5', function (req, res) {
+    db.collection('product').findOne({ "name": "Dunk blue" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -290,7 +334,7 @@ app.post('/buyproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Dunk blue" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -302,8 +346,8 @@ app.post('/buyproduct1', function (req, res) {
     });
 })
 
-app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+app.post('/sellproduct5', function (req, res) {
+    db.collection('product').findOne({ "name": "Dunk blue" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -312,7 +356,7 @@ app.post('/buyproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Dunk blue" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -324,8 +368,9 @@ app.post('/buyproduct1', function (req, res) {
     });
 })
 
-app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+
+app.post('/buyproduct6', function (req, res) {
+    db.collection('product').findOne({ "name": "Heels" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -334,7 +379,7 @@ app.post('/buyproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Heels" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -346,8 +391,8 @@ app.post('/buyproduct1', function (req, res) {
     });
 })
 
-app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+app.post('/sellproduct6', function (req, res) {
+    db.collection('product').findOne({ "name": "Heels" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -356,7 +401,7 @@ app.post('/buyproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Heels" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -368,9 +413,8 @@ app.post('/buyproduct1', function (req, res) {
     });
 })
 
-
-app.post('/buyproduct1', function (req, res) {
-    db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
+app.post('/buyproduct7', function (req, res) {
+    db.collection('product').findOne({ "name": "Grey Jordan1s" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
@@ -379,7 +423,7 @@ app.post('/buyproduct1', function (req, res) {
         //console.log(newPrice)
         //update price
         var newvalue = { $set: { price: newPrice } };
-        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+        db.collection('product').updateOne({ "name": "Grey Jordan1s" }, newvalue, function (err, result) {
             if (err) throw err;
 
         })
@@ -391,4 +435,157 @@ app.post('/buyproduct1', function (req, res) {
     });
 })
 
+app.post('/sellproduct7', function (req, res) {
+    db.collection('product').findOne({ "name": "Grey Jordan1s" }, { "price": 1 }, function (err, result) {
+        if (err) throw err;
+        var results = Object.values(result);
+        //console.log("the old price");
+        var oldprice = results[1];
+        var newPrice = oldprice + 5;
+        //console.log(newPrice)
+        //update price
+        var newvalue = { $set: { price: newPrice } };
+        db.collection('product').updateOne({ "name": "Grey Jordan1s" }, newvalue, function (err, result) {
+            if (err) throw err;
+
+        })
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                productarray: presult
+            })
+        })
+    });
+})
+
+app.post('/buyproduct8', function (req, res) {
+    db.collection('product').findOne({ "name": "Blue Jordan1s" }, { "price": 1 }, function (err, result) {
+        if (err) throw err;
+        var results = Object.values(result);
+        //console.log("the old price");
+        var oldprice = results[1];
+        var newPrice = oldprice + 5;
+        //console.log(newPrice)
+        //update price
+        var newvalue = { $set: { price: newPrice } };
+        db.collection('product').updateOne({ "name": "Blue Jordan1s" }, newvalue, function (err, result) {
+            if (err) throw err;
+
+        })
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                productarray: presult
+            })
+        })
+    });
+})
+
+app.post('/sellproduct8', function (req, res) {
+    db.collection('product').findOne({ "name": "Blue Jordan1s" }, { "price": 1 }, function (err, result) {
+        if (err) throw err;
+        var results = Object.values(result);
+        //console.log("the old price");
+        var oldprice = results[1];
+        var newPrice = oldprice + 5;
+        //console.log(newPrice)
+        //update price
+        var newvalue = { $set: { price: newPrice } };
+        db.collection('product').updateOne({ "name": "Blue Jordan1s" }, newvalue, function (err, result) {
+            if (err) throw err;
+
+        })
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                productarray: presult
+            })
+        })
+    });
+})
+
+app.post('/buyproduct9', function (req, res) {
+    db.collection('product').findOne({ "name": "Yeezy runner" }, { "price": 1 }, function (err, result) {
+        if (err) throw err;
+        var results = Object.values(result);
+        //console.log("the old price");
+        var oldprice = results[1];
+        var newPrice = oldprice + 5;
+        //console.log(newPrice)
+        //update price
+        var newvalue = { $set: { price: newPrice } };
+        db.collection('product').updateOne({ "name": "Yeezy runner" }, newvalue, function (err, result) {
+            if (err) throw err;
+
+        })
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                productarray: presult
+            })
+        })
+    });
+})
+
+app.post('/sellproduct9', function (req, res) {
+    db.collection('product').findOne({ "name": "Yeezy runner" }, { "price": 1 }, function (err, result) {
+        if (err) throw err;
+        var results = Object.values(result);
+        //console.log("the old price");
+        var oldprice = results[1];
+        var newPrice = oldprice + 5;
+        //console.log(newPrice)
+        //update price
+        var newvalue = { $set: { price: newPrice } };
+        db.collection('product').updateOne({ "name": "Yeezy runner" }, newvalue, function (err, result) {
+            if (err) throw err;
+
+        })
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                productarray: presult
+            })
+        })
+    });
+})
+
+app.post('/buyproduct10', function (req, res) {
+    db.collection('product').findOne({ "name": "Yeezy slides" }, { "price": 1 }, function (err, result) {
+        if (err) throw err;
+        var results = Object.values(result);
+        //console.log("the old price");
+        var oldprice = results[1];
+        var newPrice = oldprice + 5;
+        //console.log(newPrice)
+        //update price
+        var newvalue = { $set: { price: newPrice } };
+        db.collection('product').updateOne({ "name": "Yeezy slides" }, newvalue, function (err, result) {
+            if (err) throw err;
+
+        })
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                productarray: presult
+            })
+        })
+    });
+})
+
+app.post('/sellproduct10', function (req, res) {
+    db.collection('product').findOne({ "name": "Yeezy slides" }, { "price": 1 }, function (err, result) {
+        if (err) throw err;
+        var results = Object.values(result);
+        //console.log("the old price");
+        var oldprice = results[1];
+        var newPrice = oldprice + 5;
+        //console.log(newPrice)
+        //update price
+        var newvalue = { $set: { price: newPrice } };
+        db.collection('product').updateOne({ "name": "Yeezy slides" }, newvalue, function (err, result) {
+            if (err) throw err;
+
+        })
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                productarray: presult
+            })
+        })
+    });
+})
 
