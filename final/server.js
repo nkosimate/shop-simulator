@@ -148,22 +148,23 @@ app.post('/dologin', function (req, res) {
 
 
 app.post('/buyproduct1', function (req, res) {
-    var oldprice;
     db.collection('product').findOne({ "name": "Yeezt 720" }, { "price": 1 }, function (err, result) {
         if (err) throw err;
         var results = Object.values(result);
         //console.log("the old price");
-        oldprice = results[1];
+        var oldprice = results[1];
+        console.log(oldprice);
+        db.collection('product').find().toArray(function (err, presult) {
+            res.render('pages/shop', {
+                productarray: presult
+            })
+        })
     });
-    console.log(oldprice);
+    
     //var newPrice = parseInt(oldprice) + 5;
     //console.log(newPrice + "   this is the new p")
     //db.collection('product').findOneAndUpdate({ name: '' }, { $set: { price: newPrice } })
-    db.collection('product').find().toArray(function (err, presult) {
-        res.render('pages/shop', {
-            productarray: presult
-        })
-    })
+   
 })
 
 app.post('/sellproduct1', function (req, res) {
