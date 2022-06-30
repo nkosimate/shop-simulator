@@ -187,23 +187,24 @@ app.post('/buyproduct1', function (req, res) {
 
 app.post('/sellproduct1', function (req, res) {
     var currentuser = req.session.currentuser;
+    //check if we can sell
     db.collection('users').findOne({ "name": currentuser }, { "stock.p1": 1, "balance": 1, "total": 1 }, function (err, userresults) {
         var resultsforUser = Object.values(userresults);
         var stockresult = Object.values(resultsforUser[2]);
         var stockvalueInt = parseInt(stockresult);
+        //if yes process sale
         if (stockvalueInt > 0) {
             db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
                 if (err) throw err;
+                 //update price
                 var results = Object.values(result);
                 var oldprice = results[1];
                 var newPrice = oldprice - 5;
-                console.log(oldprice)
-                //update price
                 //update stock p1, balance and total in user db for that user
-                console.log("old stock value= " + stockvalueInt + "its data type is "+ typeof stockvalueInt);
                 var newBalance = resultsforUser[1] + oldprice;
                 var newStock = stockvalueInt - 1;
                 var newTotal = resultsforUser[3] - 150;
+                console.log("new stock value= " + newStock + "its data type is "+ typeof newStock);
                 var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
                 var newvalue = { $set: { price: newPrice } };
                 db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalue, function (err, result) {
