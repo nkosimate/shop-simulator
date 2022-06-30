@@ -148,10 +148,10 @@ app.post('/dologin', function (req, res) {
 
 
 app.post('/buyproduct1', function (req, res) {
-   db.collection('product').find({ "name": "Yeezt 720"}).toArray(function (err, result) {
+   db.collection('product').find({ "name": "Yeezt 720"})(function (err, result) {
         if (err) throw err;
         console.log("the old price");
-        console.log(result);
+        console.log(result.price);
     });
    
 
