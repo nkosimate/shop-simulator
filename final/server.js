@@ -155,6 +155,8 @@ app.post('/buyproduct1', function (req, res) {
         var oldprice = results[1];
         var newPrice = oldprice + 5;
         console.log(newPrice)
+        //update price
+        
         db.collection('product').find().toArray(function (err, presult) {
             res.render('pages/shop', {
                 productarray: presult
