@@ -157,7 +157,7 @@ app.post('/buyproduct1', function (req, res) {
                 if (err) throw err;
                 //console.log(result);
                 db.collection('product').find().toArray(function (err, presult) {
-                    res.redirect('pages/shop', {
+                    res.render('pages/shop', {
                         user: result,
                         productarray: presult
                     })
