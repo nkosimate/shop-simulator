@@ -154,19 +154,23 @@ app.post('/buyproduct1', function (req, res) {
         //console.log("the old price");
         var oldprice = results[1];
         var newPrice = oldprice + 5;
-        console.log(newPrice)
+        //console.log(newPrice)
         //update price
-        
+        var newvalue = { $set: { price: newPrice } };
+        db.collection('product').updateOne({ "name": "Yeezt 720" }, newvalue, function (err, result) {
+            if (err) throw err;
+            console.log("1 document updated");
+        })
         db.collection('product').find().toArray(function (err, presult) {
             res.render('pages/shop', {
                 productarray: presult
             })
         })
     });
-    
-   
+
+
     //db.collection('product').findOneAndUpdate({ name: '' }, { $set: { price: newPrice } })
-   
+
 })
 
 
@@ -184,10 +188,10 @@ app.post('/sellproduct1', function (req, res) {
             })
         })
     });
-    
-   
+
+
     //db.collection('product').findOneAndUpdate({ name: '' }, { $set: { price: newPrice } })
-   
+
 })
 
 
