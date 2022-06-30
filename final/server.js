@@ -195,18 +195,19 @@ app.post('/sellproduct1', function (req, res) {
             db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
                 if (err) throw err;
                 var results = Object.values(result);
-                //console.log("the old price");
+                console.log("the old price");
                 var oldprice = results[1];
                 var newPrice = oldprice + 5;
-                //console.log(newPrice)
+                console.log(oldprice)
                 //update price
                 //update stock p1, balance and total in user db for that user
+                console.log("finding the user" + userresults);
                 var newBalance = resultsforUser[1] + oldprice;
                 var newStock = stockvalueInt - 1;
                 var newTotal = resultsforUser[3] - 150;
                 var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
                 var newvalue = { $set: { price: newPrice } };
-                db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalue, function (err, result) {
+               /*  db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalue, function (err, result) {
                     if (err) throw err;
                 })
                 db.collection('users').updateOne({ "name": currentuser }, newvalueStock, function (err, result) {
@@ -224,8 +225,8 @@ app.post('/sellproduct1', function (req, res) {
                         })
 
                     })
-                });
-            });
+                }); */
+            }); 
         } else
             alert("You don't own any to sell");
 
