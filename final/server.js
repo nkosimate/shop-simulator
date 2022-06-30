@@ -197,13 +197,13 @@ app.post('/sellproduct1', function (req, res) {
                 var results = Object.values(result);
                 //console.log("the old price");
                 var oldprice = results[1];
-                var newPrice = oldprice - 5;
+                var newPrice = oldprice + 5;
                 //console.log(newPrice)
                 //update price
                 //update stock p1, balance and total in user db for that user
                 var newBalance = resultsforUser[1] + oldprice;
                 var newStock = stockvalueInt - 1;
-                var newTotal = resultsforUser[3] + 150;
+                var newTotal = resultsforUser[3] - 150;
                 var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
                 var newvalue = { $set: { price: newPrice } };
                 db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalue, function (err, result) {
