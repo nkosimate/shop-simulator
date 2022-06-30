@@ -160,29 +160,26 @@ app.post('/buyproduct1', function (req, res) {
             var stockValue = Object.values(resultsforUser[2]);
             var newStock = parseInt(stockValue) + 1;
             var newTotal = resultsforUser[3] + 150;
-            if (newStock >= 0) {
-                var newvalueProduct = { $set: { price: newPrice } };
-                var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
-                db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalueProduct, function (err, result) {
-                    if (err) throw err;
-                });
-                db.collection('users').updateOne({ "name": currentuser }, newvalueStock, function (err, result) {
-                    if (err) throw err;
-                    console.log('user stock updated');
-                });
-                db.collection('users').findOne({ "name": currentuser }, function (err, result) {
-                    if (err) throw err;
-                    //console.log(result);
-                    db.collection('product').find().toArray(function (err, presult) {
-                        res.render('pages/shop', {
-                            user: result,
-                            productarray: presult
-                        })
-
+            var newvalueProduct = { $set: { price: newPrice } };
+            var newvalueStock = { $set: { "stock.p1": newStock, balance: newBalance, total: newTotal } };
+            db.collection('product').updateOne({ "name": "Yeezy 350" }, newvalueProduct, function (err, result) {
+                if (err) throw err;
+            });
+            db.collection('users').updateOne({ "name": currentuser }, newvalueStock, function (err, result) {
+                if (err) throw err;
+                console.log('user stock updated');
+            });
+            db.collection('users').findOne({ "name": currentuser }, function (err, result) {
+                if (err) throw err;
+                //console.log(result);
+                db.collection('product').find().toArray(function (err, presult) {
+                    res.render('pages/shop', {
+                        user: result,
+                        productarray: presult
                     })
-                });
-            }else
-            alert("Can't sell not enough");
+
+                })
+            });
         });
     });
 })
@@ -754,4 +751,25 @@ app.post('/sellproduct10', function (req, res) {
         });
     });
 })
+
+app.post('/start', function (req, res) {
+    db.collection('users').updateOne({ "name": "admin" }, {
+        $set: { start: 1 }, function(err, result) {
+            if (err) throw err;
+            req.session.currentuser = uname;
+            res.render('/admin')
+        }
+    });
+})
+
+app.post('/stop', function (req, res) {
+    db.collection('users').updateOne({ "name": "admin" }, {
+        $set: { start: 0 }, function(err, result) {
+            if (err) throw err;
+            req.session.currentuser = uname;
+            res.render('/admin')
+        }
+    });
+})
+
 
