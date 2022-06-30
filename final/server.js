@@ -78,6 +78,7 @@ app.get('/shop', function (req, res) {
                 user: result,
                 productarray: presult
             })
+            console.log(productarray.toString)
         })
     });
 });
