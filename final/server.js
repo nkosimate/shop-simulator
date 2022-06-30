@@ -752,7 +752,7 @@ app.post('/sellproduct10', function (req, res) {
     });
 })
 
-app.get('/start', function (req, res) {
+app.post('/start', function (req, res) {
     db.collection('users').updateOne({ "name": "admin" }, {
         $set: { start: 1 }, function(err, result) {
             if (err) throw err;
@@ -763,7 +763,7 @@ app.get('/start', function (req, res) {
     });
 })
 
-app.get('/stop', function (req, res) {
+app.post('/stop', function (req, res) {
     db.collection('users').updateOne({ "name": "admin" }, {
         $set: { start: 0 }, function(err, result) {
             if (err) throw err;
