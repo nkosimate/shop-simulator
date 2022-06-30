@@ -147,9 +147,10 @@ app.post('/dologin', function (req, res) {
 app.post('/buyproduct1', function (req, res) {
     db.collection('users').findOne({ "name": "admin" }, { "start": 1 }, function (err, shouldWeStart) {
         if (err) throw err;
-        var shouldWeStart1 = parseInt(Object.values(shouldWeStart));
-        console.log("the value of should we start" + shouldWeStart1)
-        if (shouldWeStart1 == 0) {
+        var shouldWeStart1 = Object.values(shouldWeStart);
+        var shouldWeStart2 = shouldWeStart1[1];
+        console.log("the value of should we start" + shouldWeStart2)
+        if (shouldWeStart2 == 0) {
             console.log("don't start")
         } else {
             db.collection('product').findOne({ "name": "Yeezy 350" }, { "price": 1 }, function (err, result) {
