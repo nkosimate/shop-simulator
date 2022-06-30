@@ -86,23 +86,12 @@ app.get('/shop', function (req, res) {
 
 //this is the admin route. should only be accessed by admin
 app.get('/admin', function (req, res) {
-    if (!req.session.loggedin) {
-        res.redirect('pages/login');
-        return;
-    }
-    //get the requested user based on their username,
-    var uname = req.query.username;
-    db.collection('users').findOne({
-        "login.username": uname
-    }, function (err, result) {
-        if (err) throw err;
-        console.log(uname + ":" + result);
         //finally we just send the result to the user page as "user"
+        console.log(result);
         res.render('pages/admin', {
             //user: result
         })
     });
-});
 
 //logs user out then redirects to home page
 app.get('/logout', function (req, res) {
@@ -132,7 +121,7 @@ app.post('/dologin', function (req, res) {
             req.session.loggedin = true;
             if (uname == "admin") {
                 console.log('admin has loged in');
-                res.redirect('/admin')
+                res.redirect('/admin' + result)
             } else {
                 console.log('user has loged in');
                 res.redirect('/shop')
