@@ -150,8 +150,9 @@ app.post('/dologin', function (req, res) {
 app.post('/buyproduct1', function (req, res) {
    db.collection('product').findOne({ "name": "Yeezt 720"}, { "price": 1},function (err, result) {
         if (err) throw err;
+        var results = Object.keys(result);
         console.log("the old price");
-        console.log(typeof result);
+        console.log(results);
     });
    
 
