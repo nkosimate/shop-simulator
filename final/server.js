@@ -753,17 +753,18 @@ app.post('/sellproduct10', function (req, res) {
 })
 
 app.post('/start', function (req, res) {
+    console.log("start");
     db.collection('users').updateOne({ "name": "admin" }, {
         $set: { start: 1 }, function(err, result) {
             if (err) throw err;
             req.session.currentuser = uname;
             res.render('/admin')
-            console.log("start");
         }
     });
 })
 
 app.post('/stop', function (req, res) {
+    console.log("start");
     db.collection('users').updateOne({ "name": "admin" }, {
         $set: { start: 0 }, function(err, result) {
             if (err) throw err;
