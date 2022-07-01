@@ -1,8 +1,8 @@
 var socket =io();
 $('#myform1').submit(function(){
-    var oldPriceString = $('pprice');
+    var oldPriceString = $('pprice').text();
     var intPrice = parseInt(oldPriceString);
-    console.log("the price is " + intPrice + " of data type " + typeof(intPrice));
+    alert("the price is " + intPrice + " of data type " + typeof(intPrice));
     if (intPrice){
     }
 
