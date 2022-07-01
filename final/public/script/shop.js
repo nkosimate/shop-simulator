@@ -4,3 +4,4 @@ $('#buyp1').click(function(){
     alert("the price is " + oldPriceString + " of data type " + typeof(oldPriceString));
 
 })
+
