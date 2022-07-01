@@ -17,7 +17,7 @@ socket.on('purchase product1', function (price) {
     const textnode = document.createTextNode(toString(price));
     element.appendChild(textnode);
 
-    const oldlabel = document.getElementsById('pprice');
+    const oldlabel = document.getElementsById('pprice').textContent;
     oldlabel.replaceChild(element,oldlabel);
 
 
