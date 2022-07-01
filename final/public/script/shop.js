@@ -12,10 +12,10 @@ $('#buyp1').click(function () {
 
 socket.on('purchase product1', function (price) {
     //replace text
-    console.log(price)
+    console.log(price);
     var value = document.getElementById('pprice');
-    var replacePara = document.createElement("label")
-    replacePara.innerHTML(price)
+    var replacePara = document.createElement("label");
+    replacePara.innerHTML(parseInt(price));
     document.body.replaceChild(replacePara, value);
 
 
