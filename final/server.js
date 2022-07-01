@@ -20,19 +20,6 @@ app.use(session({ secret: 'example' }));
 //variable to hold our Database
 var db;
 
-io.on('connection', function (socket) {
-    console.log('a user connected');
-
-    socket.on('disconnect', function () {
-        console.log('user disconnected');
-    });
-
-
-});
-
-http.listen(8080, function () {
-    console.log('listening on *:8080');
-});
 
 //this is our connection to the mongo db, ts sets the variable db as our database
 MongoClient.connect(url, function (err, database) {
@@ -1509,4 +1496,17 @@ app.post('/stop', function (req, res) {
     });
 })
 
+io.on('connection', function (socket) {
+    console.log('a user connected');
+
+    socket.on('disconnect', function () {
+        console.log('user disconnected');
+    });
+
+
+});
+
+http.listen(8080, function () {
+    console.log('listening on *:8080');
+});
 
