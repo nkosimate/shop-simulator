@@ -1503,6 +1503,10 @@ io.on('connection', function (socket) {
         console.log('user disconnected');
     });
 
+    socket.on('purchase product1', function (price) {
+        console.log('new productprice: ' + price);
+    });       
+
 
 });
 
