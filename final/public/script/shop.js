@@ -8,6 +8,8 @@ $('#buyp1').click(function () {
     }
     return false;
 })
+
+
 socket.on('purchase product1', function (price) {
     //replace text
     const newNode = document.createTextNode(price);
