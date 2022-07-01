@@ -12,9 +12,10 @@ $('#buyp1').click(function () {
 
 socket.on('purchase product1', function (price) {
     //replace text
-    const newNode = document.createTextNode(price);
+    const newElement =document.createElement('h2');
+    newElement.innerHTML = price;
     const element = document.getElementById("pprice");
-    element.replaceChild(newNode, element);
+    element.replaceChild(newElement, element);
 
 });  
 
