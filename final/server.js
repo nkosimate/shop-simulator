@@ -270,7 +270,7 @@ app.post('/sellproduct1', function (req, res) {
                             })
                         });
                     } else { //they can't sell what they don't have
-                        res.redirect('pages/failsell');
+                        res.render('pages/failsell');
                     }
 
                 })
