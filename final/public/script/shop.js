@@ -14,10 +14,10 @@ socket.on('purchase product1', function (price) {
     //replace text
     console.log(price);
     const element = document.createElement("label");
-    const textnode = document.createTextNode(toString(price));
+    const textnode = document.createTextNode(price);
     element.appendChild(textnode);
 
-    const oldlabel = toString(document.getElementById('pprice').textContent);
+    const oldlabel = document.getElementById('pprice');
     document.body.replaceChild(element,oldlabel);
 
 
