@@ -1504,7 +1504,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('purchase product1', function (price) {
-        console.log('new productprice: ' + price);
+        io.emit('new productprice: ' + price);
     });       
 
 
