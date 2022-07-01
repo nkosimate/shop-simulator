@@ -15,7 +15,7 @@ socket.on('purchase product1', function (price) {
     console.log(price);
     var value = document.getElementById('pprice');
     var replacePara = document.createElement("label");
-    replacePara.innerHTML(parseInt(price));
+    replacePara.innerHTML = price;
     document.body.replaceChild(replacePara, value);
 
 
