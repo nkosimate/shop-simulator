@@ -1,5 +1,5 @@
 var socket =io();
-$('#myform1').submit(function(){
+$('#buyp1').click(function(){
     var oldPriceString = $('pprice').text();
     alert("the price is " + oldPriceString + " of data type " + typeof(oldPriceString));
 
