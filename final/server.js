@@ -105,7 +105,7 @@ app.get('/logout', function (req, res) {
 });
 
 //failed transaction
-app.get('/fail',function(req,res){
+app.get('/failsell',function(req,res){
     res.render('pages/failsell')
 });
 //********** POST ROUTES - Deal with processing data from forms ***************************
