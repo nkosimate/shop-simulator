@@ -11,15 +11,16 @@ $('#buyp1').click(function () {
 
 
 socket.on('purchase product1', function (price) {
-    //replace text
-    console.log(price);
+    //replace text 
+    //console.log(price);
+    const oldlabel = document.getElementById('pprice');
     const element = document.createElement("label");
-    const textnode = document.createTextNode(price);
-    element.appendChild(textnode);
-
-    const oldlabel = document.getElementById('pprice').ATTRIBUTE_NODE;
-    document.body.replaceChild(element,oldlabel);
+    element.innerHTML = price;
+ 
+    oldlabel.parentNode.replaceChild(element,oldlabel);
+   
 });
 
 
 
+ 
