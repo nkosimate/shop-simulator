@@ -1440,7 +1440,6 @@ io.on('connection', function (socket) {
     });
 
     socket.on('purchase product1', function (price) {
-        io.emit('purchase product1',price);
         app.post('/buyproduct1', function (req, res) {
             var currentuser = req.session.currentuser;
             db.collection('users').findOne({ "name": "admin" }, { "start": 1 }, function (err, shouldWeStart) {
@@ -1502,6 +1501,7 @@ io.on('connection', function (socket) {
                 }
             });
         })
+        io.emit('purchase product1',price);
     });       
 
 
