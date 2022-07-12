@@ -15,6 +15,7 @@ socket.on('purchase product1', function (price) {
     //console.log(price);
     const oldlabel = document.getElementById('pprice');
     const element = document.createElement("label");
+    element.setAttribute = ("class","pprice");
     element.innerHTML = price;
  
     oldlabel.parentNode.replaceChild(element,oldlabel);
